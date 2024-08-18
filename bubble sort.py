@@ -1,12 +1,6 @@
 import functions
 from functions import *
-'''
-input: una lista de numeros desordenados
 
-proceso: se toma el 1er elemento de la lista (X) y se hace X > Y?, hasta que se encuentre un X < Y
-
-output: la lista de elementos ordenados
-'''
 fichero = open('dataset-sort.txt')
 linea = fichero.readline()
 
