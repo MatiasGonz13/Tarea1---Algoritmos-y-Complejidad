@@ -1,11 +1,14 @@
 import functions
 from functions import *
 
-fichero = open('dataset-sort.txt')
+fichero = open('dataset-sort.in')
 linea = fichero.readline()
+caso = 1
 
 while linea != "":
     lista = linea[:len(linea)-1].split(',')
+    lista = StrToInt(lista)
+    print('CASO', caso)
     print('Lista desordenada:', lista)
     j=0
     while j < len(lista)-1:
@@ -18,3 +21,4 @@ while linea != "":
     print('Lista ordenada:', lista)
     print('---------------------------------')
     linea = fichero.readline()
+    caso += 1
