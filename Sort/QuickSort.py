@@ -28,10 +28,11 @@ def quick_sort(lista, inicio, fin):
     quick_sort(lista, inicio, anterior - 1)
     quick_sort(lista, anterior + 1, fin)
 
-fichero = open('dataset-sort.in')
+fichero = open('Sort/dataset-sort.in')
 linea = fichero.readline()
 caso = 1
 while linea != "":
+    print('CASO', caso)
     lista = linea[:len(linea)-1].split(',')
     lista = StrToInt(lista)
     print('Lista desordenada:', lista)

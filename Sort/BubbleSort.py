@@ -1,15 +1,7 @@
 import functions
 from functions import *
 
-fichero = open('dataset-sort.in')
-linea = fichero.readline()
-caso = 1
-
-while linea != "":
-    lista = linea[:len(linea)-1].split(',')
-    lista = StrToInt(lista)
-    print('CASO', caso)
-    print('Lista desordenada:', lista)
+def bubble_sort(lista):
     j=0
     while j < len(lista)-1:
         i = 0
@@ -18,6 +10,18 @@ while linea != "":
                 lista = swap(lista[i], lista[i+1], lista)
             i+=1
         j+=1
+    return(lista)
+
+fichero = open('Sort/dataset-sort.in')
+linea = fichero.readline()
+caso = 1
+
+while linea != "":
+    print('CASO', caso)
+    lista = linea[:len(linea)-1].split(',')
+    lista = StrToInt(lista)
+    print('Lista desordenada:', lista)
+    lista = bubble_sort(lista)
     print('Lista ordenada:', lista)
     print('---------------------------------')
     linea = fichero.readline()

@@ -32,7 +32,7 @@ def merge(left, right):
     return lista
 
 
-fichero = open('dataset-sort.in')
+fichero = open('Sort/dataset-sort.in')
 linea = fichero.readline()
 caso = 1
 while linea != "":
