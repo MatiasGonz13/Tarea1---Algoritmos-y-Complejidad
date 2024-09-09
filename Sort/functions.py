@@ -5,8 +5,8 @@ se hace de forma directa con un input(), se puede evitar
 '''
 def StrToInt(lista):
     newlista = []
-    for i in lista:
-        newlista.append(int(i))
+    for item in lista:
+        newlista.append(int(item))
     return newlista
 
 #Funcion que toma dos elementos de una lista, y los intercambia de lugar

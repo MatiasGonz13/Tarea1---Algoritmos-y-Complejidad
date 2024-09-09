@@ -12,3 +12,4 @@ def StrToInt(matriz):
         for j in range(len(matriz[i])):
             matriz[i][j] = int(matriz[i][j])
     return matriz
+    

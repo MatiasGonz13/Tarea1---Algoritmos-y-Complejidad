@@ -50,4 +50,3 @@ while linea1 != "" or linea2 != "":
     linea1 = fichero.readline()
     linea2 = fichero.readline()
     caso += 1
-    
