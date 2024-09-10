@@ -1,3 +1,5 @@
+import time
+import matplotlib.pyplot as plt
 '''
 Funcion que transforma los elementos de la lista de Sting a Integer
 Esto de debio añadir por el tipo de input, sin embargo si el input 

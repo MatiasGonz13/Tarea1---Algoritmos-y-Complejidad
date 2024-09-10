@@ -4,29 +4,29 @@ from functions import *
 def quick_sort(lista, inicio, fin):
     if inicio > fin:
         return
-    anterior = inicio
-    posterior = fin
+    i = inicio
+    j = fin
     pivote = lista[inicio]
 
-    while anterior < posterior:
-        while anterior < posterior and lista[posterior] > pivote:
-            posterior = posterior - 1
+    while i < j:
+        while i < j and lista[j] > pivote:
+            j = j - 1
 
-        if anterior < posterior:
-            lista[anterior] = lista[posterior]
-            anterior = anterior + 1
+        if i < j:
+            lista[i] = lista[j]
+            i = i + 1
 
-        while anterior < posterior and lista[anterior] <= pivote:
-            anterior = anterior + 1
+        while i < j and lista[i] <= pivote:
+            i = i + 1
 
-        if anterior < posterior:
-            lista[posterior] = lista[anterior]
-            posterior = posterior - 1
+        if i < j:
+            lista[j] = lista[i]
+            j = j - 1
 
-        lista[anterior] = pivote
+        lista[i] = pivote
         
-    quick_sort(lista, inicio, anterior - 1)
-    quick_sort(lista, anterior + 1, fin)
+    quick_sort(lista, inicio, i - 1)
+    quick_sort(lista, i + 1, fin)
 
 fichero = open('Sort/dataset-sort.in')
 linea = fichero.readline()

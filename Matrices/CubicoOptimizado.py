@@ -2,23 +2,26 @@ from functions import *
 
 def multiplicacion_optimizada(A, B):
     if len(A[0]) != len(B):
-        return("No se pueden multiplicar las matrices")
-
-    filas_A = len(A)
-    columnas_B = len(B[0])
-    C = [[0 for _ in range(columnas_B)] for _ in range(filas_A)]
-
-    bloque_size = 64
-
-    for i in range(0, filas_A, bloque_size):
-        for j in range(0, columnas_B, bloque_size):
-            for k in range(0, len(B), bloque_size):
-                for ii in range(i, min(i + bloque_size, filas_A)):
-                    for jj in range(j, min(j + bloque_size, columnas_B)):
-                        for kk in range(k, min(k + bloque_size, len(B))):
-                            C[ii][jj] += int(A[ii][kk]) * int(B[kk][jj])
-
+        return "Las matrices no son compatibles para la multiplicación"
+    # Suponemos que A es de tamaño n x m y B es de tamaño m x p
+    n = len(A)
+    m = len(A[0])
+    p = len(B[0])
+    
+    # Transponer la matriz B para mejorar la localidad de los datos
+    B_T = [[B[j][i] for j in range(m)] for i in range(p)]
+    
+    # Inicializar la matriz C de tamaño n x p con ceros
+    C = [[0 for _ in range(p)] for _ in range(n)]
+    
+    # Multiplicar A con la matriz transpuesta de B
+    for i in range(n):
+        for j in range(p):
+            # Producto escalar de la fila i de A y la fila j de B^T (que es la columna j de B)
+            C[i][j] = sum(A[i][k] * B_T[j][k] for k in range(m))
+    
     return C
+
 
 fichero = open('Matrices/dataset-matrices.in')
 linea1 = fichero.readline()
@@ -33,7 +36,8 @@ while linea1 != "" or linea2 != "":
     print()
     print(B)
     C = multiplicacion_optimizada(A, B)
-    print('Matriz resultante:', C)
+    print('Matriz resultante:')
+    print(np.array(C))
     print('---------------------------------')
     linea1 = fichero.readline()
     linea2 = fichero.readline()
