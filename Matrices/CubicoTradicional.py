@@ -1,53 +1,54 @@
 from functions import *
 
 def multiplicacion(A, B):
-    if len(A[0]) != len(B):
-        return "Las matrices no son compatibles para la multiplicación"
-    else:
-        x1 = 0
-        y1 = 0
-        x2 = 0
-        y2 = 0
-        result = 0
+    x1, y1, x2, y2, result = 0, 0, 0, 0, 0
+
+    fila = []
+    matriz = []
+    
+    for _ in range(len(A)):
+        for x2 in range(len(B[0])):
+            for y2 in range(len(B)):
+                result += int(A[y1][x1])*int(B[y2][x2])
+                y2+=1
+                x1+=1
+            fila.append(result)
+            result, x1, y2 = 0, 0, 0
+            x2 += 1
+        matriz.append(fila)
         fila = []
-        matriz = []
-        for _ in range(len(A)):
-            for x2 in range(len(B[0])):
-                for y2 in range(len(B)):
-                    result += int(A[y1][x1])*int(B[y2][x2])
-                    y2+=1
-                    x1+=1
-                fila.append(result)
-                result=0
-                x1 = 0
-                x2 += 1
-                y2 = 0
-            matriz.append(fila)
-            fila = []
-            x1 = 0
-            y1 += 1
-            x2 = 0
-            y2 = 0
+        x1, x2, y2 = 0, 0, 0
+        y1 += 1
 
         return matriz
 
 
-fichero = open('Matrices/dataset-matrices.in')
+fichero = open('Matrices/dataset-matrices-cuadradas.in')
 linea1 = fichero.readline()
 linea2 = fichero.readline()
 caso = 1
-while linea1 != "" or linea2 != "":
-    print('CASO', caso)
-    A = np.array(StrToInt(InputToMatriz(linea1)))
-    B = np.array(StrToInt(InputToMatriz(linea2)))
-    print('Multiplicacion de las siguientes matrices:')
-    print(A)
-    print()
-    print(B)
-    C = multiplicacion(A, B)
-    print('Matriz resultante:')
-    print(np.array(C))
-    print('---------------------------------')
-    linea1 = fichero.readline()
-    linea2 = fichero.readline()
-    caso += 1
+
+tamaño_de_muestra = []
+lista_promedio = []
+tiempos_exec = []
+
+while linea1 != "":
+    for _ in range(1):
+        start_time = time.time()
+        A = np.array(StrToInt(InputToMatriz(linea1)))
+        B = np.array(StrToInt(InputToMatriz(linea2)))
+        C = multiplicacion(A, B)
+        linea1 = fichero.readline()
+        linea2 = fichero.readline()
+        caso += 1
+        end_time = time.time()
+        execution_time = end_time - start_time
+        lista_promedio.append(execution_time)
+    tiempos_exec.append(cal_average(lista_promedio))
+    tamaño_de_muestra.append(len(A))
+    lista_promedio = []
+    print('A')
+
+print('DONE')
+
+print(tiempos_exec)

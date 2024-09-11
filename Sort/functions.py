@@ -11,9 +11,9 @@ def StrToInt(lista):
         newlista.append(int(item))
     return newlista
 
-#Funcion que toma dos elementos de una lista, y los intercambia de lugar
-def swap(elemento1, elemento2, lista):
-    indice1 = lista.index(elemento1)
-    indice2 = lista.index(elemento2)
-    lista[indice1], lista[indice2] = lista[indice2], lista[indice1]
-    return lista
+def cal_average(num):
+    sum_num = 0
+    for t in num:
+        sum_num = sum_num + t           
+    avg = sum_num / len(num)
+    return avg
